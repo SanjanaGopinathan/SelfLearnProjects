@@ -7,11 +7,11 @@ require('dotenv').config();
 // Create a connection pool (multiple connections ready to use)
 // Similar to having multiple database workers ready to handle queries
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
+  host: process.env.DB_HOST || process.env.MYSQL_HOST || 'localhost',
+  user: process.env.DB_USER || process.env.MYSQL_USER || 'root',
+  password: process.env.DB_PASSWORD || process.env.MYSQL_PASSWORD || '',
+  database: process.env.DB_NAME || process.env.MYSQL_DB || 'calendar_app',
+  port: process.env.DB_PORT || process.env.MYSQL_PORT || 3306,
   waitForConnections: true,
   connectionLimit: 10,        // Max 10 simultaneous connections
   queueLimit: 0               // Queue unlimited requests
