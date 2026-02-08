@@ -1,0 +1,247 @@
+/* Calendar.css */
+/* Professional calendar styling */
+
+.calendar-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* ===== CALENDAR HEADER ===== */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.calendar-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1a202c;
+  font-weight: 700;
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-calendar-nav,
+.btn-today {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  background: #f8f9fa;
+  color: #2d3748;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-calendar-nav:hover,
+.btn-today:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.btn-today {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.btn-today:hover {
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* ===== DAY HEADERS ===== */
+.calendar-day-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.day-header {
+  text-align: center;
+  font-weight: 700;
+  color: #667eea;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== CALENDAR GRID ===== */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendar-cell.empty {
+  background: #f8f9fa;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.day-number {
+  font-weight: 500;
+  color: #2d3748;
+  font-size: 0.95rem;
+}
+
+/* ===== CALENDAR CELL STATES ===== */
+
+/* Normal day - hover effect */
+.calendar-cell:not(.empty):hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
+}
+
+/* TODAY - highlighted */
+.calendar-cell.today {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+}
+
+.calendar-cell.today .day-number {
+  color: #d97706;
+  font-weight: 700;
+}
+
+/* SELECTED - user clicked this date */
+.calendar-cell.selected {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.calendar-cell.selected .day-number {
+  color: white;
+  font-weight: 700;
+}
+
+/* Both TODAY and SELECTED */
+.calendar-cell.today.selected {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.calendar-cell.today.selected .day-number {
+  color: white;
+}
+
+/* ===== CALENDAR FOOTER ===== */
+.calendar-footer {
+  padding: 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.selected-date-info {
+  margin: 0;
+  color: #2d3748;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.selected-date-info strong {
+  color: #667eea;
+  font-weight: 700;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 1rem;
+  }
+
+  .calendar-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .calendar-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .calendar-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-calendar-nav,
+  .btn-today {
+    flex: 1;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .day-header {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .day-number {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-container {
+    padding: 0.75rem;
+  }
+
+  .calendar-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .calendar-controls {
+    gap: 0.25rem;
+  }
+
+  .btn-calendar-nav,
+  .btn-today {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .calendar-cell {
+    gap: 0.25rem;
+    border-width: 1px;
+  }
+
+  .calendar-grid {
+    gap: 0.25rem;
+  }
+
+  .day-number {
+    font-size: 0.75rem;
+  }
+}

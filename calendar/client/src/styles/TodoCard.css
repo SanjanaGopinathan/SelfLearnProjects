@@ -1,0 +1,181 @@
+/* TodoCard.css */
+/* Styling for individual todo card */
+
+.todo-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.todo-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.todo-card.completed {
+  background: #f8f9fa;
+  border-color: #cbd5e0;
+  opacity: 0.7;
+}
+
+/* Checkbox styling */
+.todo-checkbox-wrapper {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* Todo content */
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-title {
+  margin: 0 0 0.25rem 0;
+  color: #1a202c;
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-word;
+  transition: all 0.3s ease;
+}
+
+.todo-card.completed .todo-title {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+.todo-description {
+  margin: 0.25rem 0 0 0;
+  color: #718096;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.todo-card.completed .todo-description {
+  text-decoration: line-through;
+  color: #cbd5e0;
+}
+
+/* Priority badge */
+.priority-badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.priority-low {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.priority-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-high {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+/* Action buttons */
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-edit-todo,
+.btn-delete-todo {
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-edit-todo:hover {
+  background: #e0e7ff;
+  border-color: #667eea;
+}
+
+.btn-delete-todo:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .todo-card {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .todo-title {
+    font-size: 0.95rem;
+  }
+
+  .todo-description {
+    font-size: 0.8rem;
+  }
+
+  .todo-actions {
+    gap: 0.25rem;
+  }
+
+  .btn-edit-todo,
+  .btn-delete-todo {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo-card {
+    flex-wrap: wrap;
+  }
+
+  .todo-content {
+    order: 2;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .todo-checkbox-wrapper {
+    order: 1;
+  }
+
+  .priority-badge {
+    order: 1;
+    margin-top: 0.75rem;
+  }
+
+  .todo-actions {
+    order: 3;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+  }
+}
