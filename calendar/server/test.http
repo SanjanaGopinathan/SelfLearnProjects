@@ -1,0 +1,119 @@
+@baseUrl = http://localhost:5000
+@token = your_token_here
+
+### ==================== AUTHENTICATION ====================
+### 1. Register User
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "Test@123",
+  "confirmPassword": "Test@123",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+
+### 2. Login User
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "Test@123"
+}
+
+### 3. Get Profile
+GET {{baseUrl}}/api/auth/profile
+Authorization: Bearer {{token}}
+
+### ==================== EVENTS ====================
+### 4. Create Event
+POST {{baseUrl}}/api/events
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Team Meeting",
+  "description": "Weekly sync with team",
+  "eventDate": "2024-02-15",
+  "startTime": "10:00:00",
+  "endTime": "11:00:00",
+  "category": "Work",
+  "color": "#667eea"
+}
+
+### 5. Get All Events
+GET {{baseUrl}}/api/events
+Authorization: Bearer {{token}}
+
+### 6. Get Events by Date
+GET {{baseUrl}}/api/events/date/2024-02-15
+Authorization: Bearer {{token}}
+
+### 7. Get Events by Date Range
+GET {{baseUrl}}/api/events/range?startDate=2024-02-01&endDate=2024-02-28
+Authorization: Bearer {{token}}
+
+### 8. Get Single Event (Replace 1 with actual event ID)
+GET {{baseUrl}}/api/events/1
+Authorization: Bearer {{token}}
+
+### 9. Update Event (Replace 1 with actual event ID)
+PUT {{baseUrl}}/api/events/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Updated Meeting",
+  "startTime": "09:00:00",
+  "endTime": "10:00:00"
+}
+
+### 10. Delete Event (Replace 1 with actual event ID)
+DELETE {{baseUrl}}/api/events/1
+Authorization: Bearer {{token}}
+
+### ==================== TODOS ====================
+### 11. Create Todo
+POST {{baseUrl}}/api/todos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Complete project documentation",
+  "description": "Write comprehensive API docs",
+  "priority": "high",
+  "dueDate": "2024-02-20"
+}
+
+### 12. Get All Todos
+GET {{baseUrl}}/api/todos
+Authorization: Bearer {{token}}
+
+### 13. Get Single Todo (Replace 1 with actual todo ID)
+GET {{baseUrl}}/api/todos/1
+Authorization: Bearer {{token}}
+
+### 14. Update Todo - Toggle Completed (Replace 1 with actual todo ID)
+PUT {{baseUrl}}/api/todos/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "completed": true
+}
+
+### 15. Update Todo - Change Priority (Replace 1 with actual todo ID)
+PUT {{baseUrl}}/api/todos/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "priority": "low",
+  "title": "Updated Todo Title"
+}
+
+### 16. Delete Todo (Replace 1 with actual todo ID)
+DELETE {{baseUrl}}/api/todos/1
+Authorization: Bearer {{token}}
