@@ -5,7 +5,7 @@
 import axios from 'axios';
 
 // Base URL for all requests
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'selflearnprojects-production.up.railway.app/api';
 
 // Create axios instance (for easier configuration)
 const api = axios.create({
