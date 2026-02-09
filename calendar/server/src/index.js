@@ -24,7 +24,7 @@ app.use(express.json());
 const allowedOrigins = [
   'http://localhost:3000',           // Development
   'http://localhost:5000',           // Development
-  'https://stellular-toffee-579981.netlify.app', // Production Netlify
+  'https://krianacalendar.netlify.app', // Production Netlify
   process.env.CORS_ORIGIN            // Any additional from env
 ].filter(Boolean);
 
