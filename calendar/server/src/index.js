@@ -21,8 +21,21 @@ const app = express();
 app.use(express.json());
 
 // Allow React frontend to communicate with Node backend
+const allowedOrigins = [
+  'http://localhost:3000',           // Development
+  'http://localhost:5000',           // Development
+  'https://stellular-toffee-579981.netlify.app', // Production Netlify
+  process.env.CORS_ORIGIN            // Any additional from env
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
