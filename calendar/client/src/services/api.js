@@ -5,7 +5,7 @@
 import axios from 'axios';
 
 // Base URL for all requests
-const API_BASE_URL = 'https://selflearnprojects-production.up.railway.app/api';
+const API_BASE_URL = 'https://selflearnprojects-production.up.railway.app/apii';
 
 // Create axios instance (for easier configuration)
 const api = axios.create({
