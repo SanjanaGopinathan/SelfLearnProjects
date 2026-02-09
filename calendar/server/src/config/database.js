@@ -16,30 +16,28 @@ require('dotenv').config();
 //   connectionLimit: 10,        // Max 10 simultaneous connections
 //   queueLimit: 0               // Queue unlimited requests
 // 
-// });const pool = mysql.createPool({
-//   uri: process.env.DATABASE_URL, // MySQL URL
-//   waitForConnections: true,
-//   connectionLimit: 10,   // 👈 10 connections in pool
-//   queueLimit: 0
 // });
-
 const pool = mysql.createPool({
-  host: process.env.MYSQLHOST || process.env.DB_HOST,
-  port: Number(process.env.MYSQLPORT || process.env.DB_PORT),
-  user: process.env.MYSQLUSER || process.env.DB_USER,
-  password: process.env.MYSQLPASSWORD || process.env.DB_PASSWORD,
-  database: process.env.MYSQLDATABASE || process.env.DB_NAME,
-  
+  uri: process.env.DATABASE_URL, // MySQL URL
   waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-  ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : undefined
+  connectionLimit: 10,   // 👈 10 connections in pool
+  queueLimit: 0
 });
+
+// const pool = mysql.createPool({
+//   host: process.env.MYSQLHOST || process.env.DB_HOST,
+//   port: Number(process.env.MYSQLPORT || process.env.DB_PORT),
+//   user: process.env.MYSQLUSER || process.env.DB_USER,
+//   password: process.env.MYSQLPASSWORD || process.env.DB_PASSWORD,
+//   database: process.env.MYSQLDATABASE || process.env.DB_NAME,
+  
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+//   ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : undefined
+// });
 console.log({
-  host: process.env.MYSQLHOST,
-  port: process.env.MYSQLPORT,
-  user: process.env.MYSQLUSER,
-  database: process.env.MYSQLDATABASE
+  host: process.env.DATABASE_URL
 });
 // Test the connection
 async function testConnection() {
