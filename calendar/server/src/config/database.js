@@ -35,6 +35,12 @@ const pool = mysql.createPool({
   queueLimit: 0,
   ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : undefined
 });
+console.log({
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  database: process.env.MYSQLDATABASE
+});
 // Test the connection
 async function testConnection() {
   try {
