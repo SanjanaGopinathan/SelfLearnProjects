@@ -42,6 +42,7 @@ async function getTodosByUserId(userId) {
     return todos;
   } catch (error) {
     console.error(`[getTodosByUserId] Error for userId ${userId}:`, error.message);
+    console.error(`[getTodosByUserId] Error for userId ${userId}:`, error.message);
     throw error;
   }
 }
