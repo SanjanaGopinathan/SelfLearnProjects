@@ -20,14 +20,17 @@ async function createTodo(userId, title, description, priority, dueDate) {
 // Get all todos for user
 async function getTodosByUserId(userId) {
   try {
+    console.log(`[getTodosByUserId] Starting fetch for userId: ${userId}`);
     const connection = await pool.getConnection();
     const [todos] = await connection.execute(
       'SELECT * FROM todos WHERE userId = ? ORDER BY completed ASC, dueDate ASC',
       [userId]
     );
     connection.release();
+    console.log(`[getTodosByUserId] Fetched ${todos.length} todos for userId ${userId}`);
     return todos;
   } catch (error) {
+    console.error(`[getTodosByUserId] Error for userId ${userId}:`, error.message);
     throw error;
   }
 }
