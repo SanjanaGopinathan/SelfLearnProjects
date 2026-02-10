@@ -14,7 +14,7 @@ async function createTodoController(req, res, next) {
   try {
     const userId = req.user.userId;
     const todoData = req.body;
-    
+    console.log(`[createTodoController] Received request to create todo for userId: ${userId} with data:`, todoData);
     const result = await createTodoService(userId, todoData);
     return res.status(201).json(result);
     
@@ -33,11 +33,16 @@ async function createTodoController(req, res, next) {
 // GET /api/todos
 async function getTodosController(req, res, next) {
   try {
+    console.log('[getTodosController] GET /api/todos request received');
+    console.log('[getTodosController] req.user:', req.user);
     const userId = req.user.userId;
+    console.log('[getTodosController] Calling getTodosService with userId:', userId);
     const result = await getTodosService(userId);
+    console.log('[getTodosController] Service result:', result);
     return res.status(200).json(result);
     
   } catch (error) {
+    console.error('[getTodosController] Error:', error.message);
     return next(error);
   }
 }

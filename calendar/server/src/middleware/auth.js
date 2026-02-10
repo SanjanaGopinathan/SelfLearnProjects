@@ -7,10 +7,13 @@ const { verifyToken } = require('../utils/tokenUtils');
 // Add this to any route that needs login
 const authenticate = (req, res, next) => {
   try {
+    console.log('[authenticate] Request to:', req.method, req.path);
     // Get token from header: "Bearer <token>"
     const authHeader = req.headers.authorization;
+    console.log('[authenticate] Auth header present:', !!authHeader);
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      console.log('[authenticate] No valid bearer token');
       return res.status(401).json({ 
         success: false, 
         message: 'No token provided' 
@@ -22,8 +25,10 @@ const authenticate = (req, res, next) => {
 
     // Verify token
     const decoded = verifyToken(token);
+    console.log('[authenticate] Token decoded:', decoded ? 'success' : 'failed');
     
     if (!decoded) {
+      console.log('[authenticate] Invalid or expired token');
       return res.status(401).json({ 
         success: false, 
         message: 'Invalid or expired token' 
