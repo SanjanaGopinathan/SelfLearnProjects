@@ -30,7 +30,8 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') {
+  // Don't cache API requests
+  if (event.request.url.includes('/api/') || event.request.method !== 'GET') {
     return;
   }
 

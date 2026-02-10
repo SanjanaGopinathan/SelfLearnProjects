@@ -1,4 +1,4 @@
-const CACHE_NAME = 'calendar-app-v1';
+const CACHE_NAME = 'calendar-app-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -30,7 +30,8 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') {
+  // Don't cache API requests
+  if (event.request.url.includes('/api/') || event.request.method !== 'GET') {
     return;
   }
 
