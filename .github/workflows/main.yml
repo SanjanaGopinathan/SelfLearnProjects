@@ -1,0 +1,8 @@
+name: calendar-app
+on: workflow_dispatch
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing-workflow
+        run: echo "workflow works!" 
